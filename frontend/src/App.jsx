@@ -1,11 +1,23 @@
-import React from "react";
+import "./App.css";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import LandingPage from "./pages/LandingPage";
+import Authentication from "./pages/Authentication";
+import { AuthProvider } from "./contexts/AuthContext";
 
-const App = () => {
+function App() {
   return (
-    <div>
-      <h1 class="text-3xl font-bold underline">Hello world!</h1>
+    <div className="App">
+      <Router>
+        <AuthProvider>
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+
+            <Route path="/auth" element={<Authentication />} />
+          </Routes>
+        </AuthProvider>
+      </Router>
     </div>
   );
-};
+}
 
 export default App;
